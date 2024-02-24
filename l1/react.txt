@@ -1,0 +1,72 @@
+Advanced JS topics for React
+
+1) ES5 vs ES6
+2) Array, objects, functions
+3) Arrow functions / Normal functions
+4) Array method (map, filter, reduce, find, findIndex)
+5) Destucturing
+6) Rest Spread
+7) try catch
+8) Async await
+9) Promises
+
+First React App
+---------------
+
+( using CDN links )
+2 links are there 
+    > - React (core) link -> creating elements
+            const heading = React.createElement('tag-name', 'object', 'child-elements');
+                obj -> used to give attributes to our class in key:value pair
+                    {class : "heading", xyz:"abc" }
+      - Creating the below structure us  ing React
+        
+            <div id="parent">
+                <div id="child">
+                    <h1>This is h1 tag</h1>
+                    <h2>This is h2 tag</h2>
+                </div>
+            </div>
+
+            const parent = React.createElement("div", {id:"parent"}, 
+                React.createElement("div", {id:"child"}, [
+                    React.createElement("h1", {}, "This is h1 tag"),
+                    React.createElement("h2", {}, "This is h2 tag"),
+                ])
+            );
+
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render(parent);     
+    
+    >  * ReactDOM link -> for creating root and rendering things inside it
+            const root =  React.createRoot(document.getElementById("root"));
+       * Then we have to render the element that we created in the previous line
+            root.render(heading);
+         when we render things the conent inside it getting replaced by the new 
+         rendering things.
+
+------------------------------------------------
+Note: 
+    * The React.createElement cerates a react-element(Object) which after rendering 
+      will be then converted to HTML.
+            react-element(Object) => HTML
+    * Order of filed matters a lot
+      i.e, the CDN script files which should be the abouve the script app.js file 
+      which uses it.
+    * When the root is rendered it does not affect things outside it  
+------------------------------------------------
+
+Cross Origin
+    > This enables a better error handling experience in React 16 and later.
+
+
+Library vs Framework
+********************
+Library:
+    > It can be applied to only to a specific portion of the page (side-bar, header, footer...)
+    > It can work indepentently on a specific portion
+
+Framework:
+    > It comes with all loads of packages things with it, It should be applied as a whole
+    > Predefined things
+
