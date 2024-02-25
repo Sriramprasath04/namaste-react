@@ -1,0 +1,22 @@
+npm
+    >> npmjs.com (official site)
+    >> npm is a package manager (not Node Package Manager)
+
+    >> Initializing npm to our project
+            npm init (or) npm init -y
+       after Initialization of npm it creates a "package.json" (configuration file) 
+
+The most important package in our project is the "bundler"(web-pack, parcel, ...)
+    There are 2 types of dependency
+        1) Dev-dependency 
+            -> It is required in the development phase
+        2) Normal dependency 
+            -> It is used in the production
+
+    To install the dependency in our project use the command
+        >> npm install -D parcel
+
+npx
+    >> It executes our package
+        npx parcel src
+            src -> (index.html)
