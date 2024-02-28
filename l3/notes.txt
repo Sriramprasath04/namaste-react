@@ -1,22 +1,132 @@
-npm
-    >> npmjs.com (official site)
-    >> npm is a package manager (not Node Package Manager)
+JSX
+--- 
+    >> It is not HTML in JS, It's a HTML-like or XML-like syntax  
+    >> The JavaScript Engine (It understand ES6) will not understand JSX 
+       and not understandable by the ReactDOm
 
-    >> Initializing npm to our project
-            npm init (or) npm init -y
-       after Initialization of npm it creates a "package.json" (configuration file) 
+    JSX  --trsanpiled--> JS Engine 
+                |
+              parcel -> It does it with the help of "Babel"
 
-The most important package in our project is the "bundler"(web-pack, parcel, ...)
-    There are 2 types of dependency
-        1) Dev-dependency 
-            -> It is required in the development phase
-        2) Normal dependency 
-            -> It is used in the production
+    JSX  ==>  React.createElement  ==> ReactElement(JS Object)  ==>  HTMLelement
 
-    To install the dependency in our project use the command
-        >> npm install -D parcel
+{} --> used to apply JavaScript inside the JSX
+     > we can perform calculations inside it 
+         {1000+23445} // 24445
 
-npx
-    >> It executes our package
-        npx parcel src
-            src -> (index.html)
+React Element
+-------------
+      const ele1 = <h1>I'm a ReactElement</h1>;
+
+   > we can render a Element 
+      const title = (
+         <h1 className="heading">This is a React Element</h1>
+      );
+      
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(title); 
+   
+   > we can use Element inside a Element
+      const ele1 = <h1 className="heading">This is a React Element-1</h1>;
+      const ele2 = (
+         <div className = "container">
+            {ele1}
+            <h1>This is a React Element-2</h1>
+         </div>
+      );
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(ele2);
+      
+   > we can use Element inside a Component
+      const ele1 = <span className="heading">This is a React Element</span>;
+
+      const Component = () => (
+         <div className = "container">
+            <h1>{ele1}Inside a React Component</h1>
+         </div>
+         
+      );
+
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<Component/>);
+
+
+React Components
+----------------
+   >> Everything in React is a Component
+   >> There are 2 ttpes of Components
+         1) Class Component
+         2) Functional Component
+
+   Functional Component
+   --------------------
+      > It's just a normal JavaScript Function which return some JSX/ReactElement.
+      > to render a functional component 
+            const HeadingComponent = () => {
+               return (
+                  <div id="container">
+                     <h1 className = "head">Namaste React Functional Component</h1>
+                  </div>
+               );
+            } 
+            
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render(<HeadingComponent/>);    
+
+      > The component can't be used before initilization
+
+      > we can use component inside another component
+            const Component1 = () => (
+               <h1 className = "head">This is Component-1 </h1>
+            ) 
+
+
+            const Component2 = () => (
+               <div className = "container">
+                  <Component1></Component1>
+                  <h1>Inside a React Component-2</h1>
+               </div>
+               
+            );
+
+
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render(<Component2/>); 
+
+      > we can use component inside an ReactElement
+            const Component1 = () => (
+               <h1 className = "head">This is Component-1 </h1>
+            ) 
+
+            const ele1 = (<div className="heading">
+                           <p>This is a React Element</p>
+                           <Component1></Component1>
+                        </div>
+                        );
+
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render(ele1);
+
+      > we can call the component in 3 ways, they are 
+            const Component1 = () => (
+               <h1 className = "head">This is Component-1 </h1>
+            ) 
+
+            const Component2 = () => (
+               <div className = "container">
+                  <Component1></Component1>
+                  <Component1/>
+                  {Component1()}
+                  <h1>Inside a React Component-2</h1>
+               </div>
+               
+            );
+
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render(<Component2/>);
+    
+      > at the EOD the Functional Components are Functions in JavaScript
+            {Component1()}
+         we can call the functional component like a Function
